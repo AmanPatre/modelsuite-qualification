@@ -1,7 +1,7 @@
 ﻿import { reviewSubmission } from '../../api/submissions';
 
 const REVIEW_STATUS_CLASS = {
-  Pending:  'status-badge-Submitted',
+  Pending: 'status-badge-Submitted',
   Approved: 'status-badge-Approved',
   Rejected: 'status-badge-Rejected',
   'Needs Modification': 'status-badge-Needs-Modification',
@@ -10,6 +10,7 @@ const REVIEW_STATUS_CLASS = {
 const SubmissionReviewModal = ({ submission, onClose, onReviewed }) => {
 
   const handleReview = async (status) => {
+    if (status === 'Rejected' && !window.confirm('Are you sure you want to reject this submission?')) return;
     try {
       await reviewSubmission(submission._id, status);
       onReviewed();
@@ -19,7 +20,7 @@ const SubmissionReviewModal = ({ submission, onClose, onReviewed }) => {
     }
   };
 
-  const task   = submission.taskId   || {};
+  const task = submission.taskId || {};
   const talent = submission.talentId || {};
 
   return (
