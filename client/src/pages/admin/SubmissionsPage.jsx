@@ -7,6 +7,7 @@ const REVIEW_STATUS_CLASS = {
   Pending:  'status-badge-Submitted',
   Approved: 'status-badge-Approved',
   Rejected: 'status-badge-Rejected',
+  'Needs Modification': 'status-badge-Needs-Modification',
 };
 
 const SubmissionsPage = () => {
@@ -62,7 +63,7 @@ const SubmissionsPage = () => {
         <div className="bg-bg-card border border-border rounded-xl overflow-hidden">
           <div className="flex items-center justify-between px-6 py-5 border-b border-border">
             <h2 className="text-[16px] font-semibold text-text-primary">All Submissions</h2>
-            
+
             <span className="text-[12px] text-text-faint bg-bg-input border border-border px-2.5 py-1 rounded-full">
               {submissions.length} total
             </span>
@@ -81,7 +82,7 @@ const SubmissionsPage = () => {
                     <th className={thCls}>Talent</th>
                     <th className={thCls}>Notes</th>
                     <th className={thCls}>File</th>
-                    
+
                     <th className={thCls}>Submitted</th>
                     <th className={thCls}>Review Status</th>
                     <th className={thCls}>Actions</th>
@@ -109,7 +110,7 @@ const SubmissionsPage = () => {
                       </td>
 
                       {/* Notes — truncated, no tooltip */}
-                      
+
                       <td className={`${tdCls} max-w-[200px]`}>
                         <span className="block text-text-muted truncate text-[13px]">
                           {sub.notes || <span className="italic text-text-faint">No notes</span>}

@@ -6,6 +6,7 @@ const STATUS_CLASS = {
   Submitted: 'status-badge-Submitted',
   Approved:  'status-badge-Approved',
   Rejected:  'status-badge-Rejected',
+  'Needs Modification': 'status-badge-Needs-Modification',
 };
 
 const TaskCard = ({ task, showClaimButton = false, onClaimed }) => {
@@ -32,14 +33,14 @@ const TaskCard = ({ task, showClaimButton = false, onClaimed }) => {
         )}
       </div>
 
-      
+
       {task.description && (
         <p className="text-[13px] text-text-muted leading-relaxed">{task.description}</p>
       )}
 
       {/* Meta row */}
       <div className="flex items-center justify-between flex-wrap gap-2 mt-auto">
-        
+
         <span className="text-[12px] text-text-faint">
           {task.dueDate ? `Due: ${task.dueDate}` : 'No due date'}
         </span>

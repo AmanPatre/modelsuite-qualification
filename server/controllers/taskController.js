@@ -84,7 +84,7 @@ const deleteTask = async (req, res) => {
   try {
     const task = await Task.findById(req.params.id);
     if (!task) return res.status(404).json({ message: 'Task not found' });
-    // Cascade delete related submissions
+    // cascade delete related submissions
     await Submission.deleteMany({ taskId: req.params.id });
     await Task.findByIdAndDelete(req.params.id);
 

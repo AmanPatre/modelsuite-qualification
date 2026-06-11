@@ -24,6 +24,7 @@ const submitTask = async (req, res) => {
       // Overwrite: update in place
       submission.fileUrl = fileUrl;
       submission.notes = notes;
+      submission.reviewStatus = 'Pending';
       await submission.save();
     } else {
       submission = await Submission.create({
@@ -96,8 +97,8 @@ const reviewSubmission = async (req, res) => {
     if (!submission) {
       return res.status(404).json({ message: 'Submission not found' });
     }
-    // Update task properly when submission is Approved/Rejected
-    if (reviewStatus === 'Approved' || reviewStatus === 'Rejected') {
+    // update task  when submission  is approved, rejected, or needs modification
+    if (reviewStatus === 'Approved' || reviewStatus === 'Rejected' || reviewStatus === 'Needs Modification') {
       await Task.findByIdAndUpdate(submission.taskId._id, { status: reviewStatus });
 
       // Update the populated object so the response reflects the new status

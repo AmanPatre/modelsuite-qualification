@@ -4,6 +4,7 @@ const REVIEW_STATUS_CLASS = {
   Pending:  'status-badge-Submitted',
   Approved: 'status-badge-Approved',
   Rejected: 'status-badge-Rejected',
+  'Needs Modification': 'status-badge-Needs-Modification',
 };
 
 const SubmissionReviewModal = ({ submission, onClose, onReviewed }) => {
@@ -46,7 +47,7 @@ const SubmissionReviewModal = ({ submission, onClose, onReviewed }) => {
               {task.dueDate && (
                 <span className="text-[12px] text-text-faint">Due: {task.dueDate}</span>
               )}
-              
+
               {task.status && (
                 <span className={`inline-block px-2 py-[2px] rounded-full text-[11px] font-medium status-badge-${task.status}`}>
                   {task.status}
@@ -90,7 +91,7 @@ const SubmissionReviewModal = ({ submission, onClose, onReviewed }) => {
               <a href={submission.fileUrl} target="_blank" rel="noreferrer"
                 className="flex items-center gap-2.5 text-[13px] text-primary font-medium hover:text-secondary transition-colors">
                 <span className="text-base">📎</span>
-                
+
                 <span className="underline underline-offset-2 truncate">{submission.fileUrl}</span>
                 <span className="text-text-faint text-[11px] shrink-0">↗ open</span>
               </a>
@@ -108,6 +109,10 @@ const SubmissionReviewModal = ({ submission, onClose, onReviewed }) => {
             <button onClick={() => handleReview('Rejected')}
               className="flex-1 py-2.5 bg-danger/10 text-danger border border-danger/30 rounded-lg text-sm font-semibold cursor-pointer hover:bg-danger/20 transition-all font-sans">
               ✕ Reject
+            </button>
+            <button onClick={() => handleReview('Needs Modification')}
+              className="flex-1 py-2.5 bg-[#F59E0B]/10 text-[#F59E0B] border border-[#F59E0B]/30 rounded-lg text-sm font-semibold cursor-pointer hover:bg-[#F59E0B]/20 transition-all font-sans">
+              ✎ Request Mod
             </button>
             <button onClick={() => handleReview('Approved')}
               className="flex-1 py-2.5 bg-success/10 text-success border border-success/30 rounded-lg text-sm font-semibold cursor-pointer hover:bg-success/20 transition-all font-sans">

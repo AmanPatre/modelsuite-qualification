@@ -3,26 +3,27 @@ import SubmitTaskModal from './SubmitTaskModal';
 
 /* ── Status badge classes ── */
 const STATUS_CLASS = {
-  Open:      'status-badge-Open',
-  Claimed:   'status-badge-Claimed',
+  Open: 'status-badge-Open',
+  Claimed: 'status-badge-Claimed',
   Submitted: 'status-badge-Submitted',
-  Approved:  'status-badge-Approved',
-  Rejected:  'status-badge-Rejected',
+  Approved: 'status-badge-Approved',
+  Rejected: 'status-badge-Rejected',
+  'Needs Modification': 'status-badge-Needs-Modification',
 };
 
 /* ── Calendar icon ── */
 const IconCalendar = () => (
   <svg width="12" height="12" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-    <rect x="3" y="4" width="14" height="14" rx="2"/>
-    <path d="M7 2v4M13 2v4M3 9h14"/>
+    <rect x="3" y="4" width="14" height="14" rx="2" />
+    <path d="M7 2v4M13 2v4M3 9h14" />
   </svg>
 );
 
 /* ── Upload icon ── */
 const IconUpload = () => (
   <svg width="12" height="12" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M10 14V4M6 8l4-4 4 4"/>
-    <path d="M3 17h14"/>
+    <path d="M10 14V4M6 8l4-4 4 4" />
+    <path d="M3 17h14" />
   </svg>
 );
 
@@ -50,8 +51,8 @@ const MyTasksList = ({ tasks, onRefresh }) => {
         }}>
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2"
           style={{ margin: '0 auto 10px', opacity: 0.3 }} strokeLinecap="round" strokeLinejoin="round">
-          <rect x="3" y="3" width="18" height="18" rx="3"/>
-          <path d="M9 12l2 2 4-4"/>
+          <rect x="3" y="3" width="18" height="18" rx="3" />
+          <path d="M9 12l2 2 4-4" />
         </svg>
         You haven&apos;t claimed any tasks yet. Go grab one above!
       </div>
@@ -82,7 +83,7 @@ const MyTasksList = ({ tasks, onRefresh }) => {
 
             {/* Actions */}
             <div className="flex items-center gap-2 shrink-0">
-              {(task.status === 'Claimed' || task.status === 'Submitted') && (
+              {(task.status === 'Claimed' || task.status === 'Submitted' || task.status === 'Needs Modification') && (
                 <button
                   onClick={() => setSubmitTarget(task)}
                   className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[12px] font-semibold cursor-pointer border transition-all"
@@ -102,7 +103,7 @@ const MyTasksList = ({ tasks, onRefresh }) => {
                     e.currentTarget.style.borderColor = 'rgba(59,130,246,0.25)';
                   }}>
                   <IconUpload />
-                  {task.status === 'Submitted' ? 'Re-submit' : 'Submit'}
+                  {task.status === 'Claimed' ? 'Submit' : 'Re-submit'}
                 </button>
               )}
 
