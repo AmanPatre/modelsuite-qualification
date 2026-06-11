@@ -1,11 +1,11 @@
 ﻿import { claimTask } from '../../api/talent';
 
 const STATUS_CLASS = {
-  Open:      'status-badge-Open',
-  Claimed:   'status-badge-Claimed',
+  Open: 'status-badge-Open',
+  Claimed: 'status-badge-Claimed',
   Submitted: 'status-badge-Submitted',
-  Approved:  'status-badge-Approved',
-  Rejected:  'status-badge-Rejected',
+  Approved: 'status-badge-Approved',
+  Rejected: 'status-badge-Rejected',
   'Needs Modification': 'status-badge-Needs-Modification',
 };
 
@@ -35,7 +35,7 @@ const TaskCard = ({ task, showClaimButton = false, onClaimed }) => {
 
 
       {task.description && (
-        <p className="text-[13px] text-text-muted leading-relaxed">{task.description}</p>
+        <p className="text-[13px] text-text-muted leading-relaxed line-clamp-3 overflow-hidden">{task.description}</p>
       )}
 
       {/* Meta row */}
